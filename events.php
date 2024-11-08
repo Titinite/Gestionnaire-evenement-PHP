@@ -5,7 +5,7 @@
 
 <body>
     <form action="" method="post">
-        <div>
+        <div class="forms-style">
             <fieldset>
                 <legend>Titre de l'évènement</legend>
                 <input type="text" name="title" required>
@@ -20,8 +20,10 @@
                 <legend>Date de l'évènement</legend>
                 <input type="date" name="event_date" required>
             </fieldset>
+            <div class="center">
+                <button type="submit">Enregistrer</button>
+            </div>
         </div>
-        <button type="submit">Enregistrer</button>
     </form>
 
     <h2>Liste des Evènements</h2>
@@ -38,7 +40,7 @@
             <td><?php echo htmlspecialchars($event['event_description']); ?></td>
             <td><?php echo htmlspecialchars($event['event_date']); ?></td>
             <td><?php echo htmlspecialchars($event['created_date']); ?></td>
-            <td><button >Modifier</button></td>
+            <td><button>Modifier</button></td>
             <td><button>Supprimer</button></td>
         </tr>
         <?php endforeach; ?>

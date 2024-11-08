@@ -4,7 +4,7 @@
 
 <body>
     <form action="" method="post">
-        <div>
+        <div class="forms-style">
             <fieldset>
                 <legend>Nom d'utilisateur</legend>
                 <input type="text" name="username" required>
@@ -14,8 +14,11 @@
                 <legend>Mot de passe</legend>
                 <input type="password" name="password" required>
             </fieldset>
+
+            <div class="center">
+                <button type="submit">Connexion</button>
+            </div>
         </div>
-        <button type="submit">Connexion</button>
     </form>
 </body>
 

@@ -1,0 +1,136 @@
+body {
+    background-color: #f4f6f9;
+    font-family: 'Arial', sans-serif;
+    margin: 75px 150px 75px 150px;
+    padding: 0;
+    color: #333;
+    line-height: 1.6;
+}
+
+.container {
+    margin: 0 auto;
+    max-width: 1000px;
+    padding: 40px 20px;
+    background-color: #fff;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+h1 {
+    text-align: center;
+    color: #34495e;
+    font-size: 2.5em;
+    margin-bottom: 10px;
+}
+
+h2 {
+    text-align: center;
+    color: #7f8c8d;
+    font-size: 1.8em;
+    margin-bottom: 20px;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+    margin-top: 20px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.05);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+th, td {
+    border: 1px solid #ecf0f1;
+    padding: 12px;
+    text-align: center;
+    font-size: 1em;
+}
+
+th {
+    background-color: #34495e;
+    color: #ffffff;
+    font-weight: 600;
+}
+
+td {
+    background-color: #ecf0f1;
+    color: #34495e;
+}
+
+button {
+    background-color: #34495e;
+    border: none;
+    color: white;
+    padding: 12px 24px;
+    font-size: 1em;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+button:hover {
+    background-color: #ecf0f1;
+    color: #34495e;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+button:focus {
+    outline: none;
+    box-shadow: 0 0 0 4px rgba(52, 73, 94, 0.3);
+}
+
+
+fieldset {
+    border: 1px solid #dcdde1;
+    padding: 20px;
+    margin: 20px 0;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.05);
+    background-color: #f9f9f9;
+}
+
+legend {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #34495e;
+    padding: 0 10px;
+    border-radius: 4px;
+    background-color: #ecf0f1;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+fieldset label {
+    font-size: 1em;
+    color: #7f8c8d;
+    margin-bottom: 8px;
+    display: block;
+}
+
+fieldset input,
+fieldset select,
+fieldset textarea {
+    width: calc(100% - 20px);
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #dcdde1;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: 1em;
+}
+
+fieldset input:focus,
+fieldset select:focus,
+fieldset textarea:focus {
+    border-color: #34495e;
+    outline: none;
+    box-shadow: 0px 0px 4px rgba(52, 73, 94, 0.3);
+}
+
+.forms-style {
+    margin: 0 500px 0 500px;
+}
+
+.centre{
+    display: flex;
+    text-align: center;
+}
