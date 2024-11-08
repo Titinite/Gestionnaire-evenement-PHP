@@ -26,8 +26,8 @@
 
     function deleteEvent($Id) {
         global $base;
-        $query = $base->query("DELETE FROM events WHERE Id = :id");
-        $query->bindParam("Id", $Id);
+        $query = $base->query("DELETE * FROM events WHERE Id = :Id");
+        $query->bindParam(":Id", $Id);
         $query->execute();
     }
 
