@@ -1,6 +1,6 @@
 <?php
     try {
-        $base = new PDO("mysql:host=127.0.0.1;dbname=gestion_events", "root", "");
+        $base = new PDO("mysql:host=127.0.0.1:8889;dbname=gestion_events", "root", "root");
         $base->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     }
     catch (PDOException $e) {
@@ -22,6 +22,22 @@
         global $base;
         $query = $base->query("SELECT * FROM events");
         return $query->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    function deleteEvent($Id) {
+        global $base;
+        $query = $base->query("DELETE FROM events WHERE Id = :id");
+        $query->bindParam("Id", $Id);
+        $query->execute();
+    }
+
+    function changeEvent($title, $event_description, $event_date){
+        global $base;
+        $query = $base->query("UPDATE events SET title = :title, event_description = :event_description, event_date = :event_date WHERE Id = :id");
+        $query->bindParam("title", $title);
+        $query->bindParam("event_description", $event_description);
+        $query->bindParam("event_date", $event_date);
+        $query->execute();
     }
 
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
