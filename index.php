@@ -1,46 +1,22 @@
 <?php
     require_once 'header.php';
-    require 'data.php';
 ?>
 
 <body>
     <form action="" method="post">
         <div>
             <fieldset>
-                <legend>Titre de l'évènement</legend>
-                <input type="text" name="title" required>
+                <legend>Nom d'utilisateur</legend>
+                <input type="text" name="username" required>
             </fieldset>
 
             <fieldset>
-                <legend>Description</legend>
-                <input type="text" name="event_description" required>
-            </fieldset>
-
-            <fieldset>
-                <legend>Date de l'évènement</legend>
-                <input type="date" name="event_date" required>
+                <legend>Mot de passe</legend>
+                <input type="password" name="password" required>
             </fieldset>
         </div>
-        <button type="submit">Enregistrer</button>
+        <button type="submit">Connexion</button>
     </form>
-
-    <h2>Liste des Evènements</h2>
-    <table border="1">
-        <tr>
-            <th>Titre</th>
-            <th>Description</th>
-            <th>Date de l'évènement</th>
-            <th>Date de création</th>
-        </tr>
-        <?php foreach ($events as $event): ?>
-        <tr>
-            <td><?php echo htmlspecialchars($event['title']); ?></td>
-            <td><?php echo htmlspecialchars($event['event_description']); ?></td>
-            <td><?php echo htmlspecialchars($event['event_date']); ?></td>
-            <td><?php echo htmlspecialchars($event['created_date']); ?></td>
-        </tr>
-        <?php endforeach; ?>
-    </table>
 </body>
 
 <?php 
