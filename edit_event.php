@@ -16,7 +16,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <body>
     <form action="edit_event.php" method="POST">
         <div class="forms-style">
-            <input type="hidder" name="Id" value="<? $_GET["Id"]; ?>">
+            <input type="hidden" name="Id" value="<?= $_GET["Id"]; ?>">
             <fieldset>
                 <legend>Titre de l'évènement</legend>
                 <input type="text" name="title" required value="<?= htmlspecialchars($_GET['title']); ?>">
