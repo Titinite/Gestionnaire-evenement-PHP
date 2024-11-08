@@ -38,7 +38,7 @@
             <td><?php echo htmlspecialchars($event['event_description']); ?></td>
             <td><?php echo htmlspecialchars($event['event_date']); ?></td>
             <td><?php echo htmlspecialchars($event['created_date']); ?></td>
-            <td><button >Modifier</button></td>
+            <td><button>Modifier</button></td>
             <td><button>Supprimer</button></td>
         </tr>
         <?php endforeach; ?>
