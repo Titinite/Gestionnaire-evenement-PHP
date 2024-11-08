@@ -7,6 +7,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $event_description = $_POST['event_description'];
     $event_date = $_POST['event_date'];
     changeEvent($title, $event_description, $event_date);
+
+    header('Location: index.php');
 }
 ?>
 
@@ -33,5 +35,3 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </div>
     </form>
 </body>
-
-<?php header('Location: index.php'); ?>

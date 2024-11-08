@@ -33,7 +33,7 @@
 
     function changeEvent($title, $event_description, $event_date){
         global $base;
-        $query = $base->query("UPDATE events SET title = :title, event_description = :event_description, event_date = :event_date WHERE Id = :id");
+        $query = $base->prepare("UPDATE events SET title = :title, event_description = :event_description, event_date = :event_date WHERE Id = :id");
         $query->bindParam("title", $title);
         $query->bindParam("event_description", $event_description);
         $query->bindParam("event_date", $event_date);
