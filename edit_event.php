@@ -3,10 +3,11 @@ include "data.php";
 include "header.php";
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $Id = $_POST['Id'];
     $title = $_POST['title'];
     $event_description = $_POST['event_description'];
     $event_date = $_POST['event_date'];
-    changeEvent($title, $event_description, $event_date);
+    changeEvent($Id, $title, $event_description, $event_date);
 
     header('Location: index.php');
 }
@@ -15,6 +16,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <body>
     <form action="edit_event.php" method="POST">
         <div class="forms-style">
+            <input type="hidder" name="Id" value="<? $_GET["Id"]; ?>">
             <fieldset>
                 <legend>Titre de l'évènement</legend>
                 <input type="text" name="title" required value="<?= htmlspecialchars($_GET['title']); ?>">
