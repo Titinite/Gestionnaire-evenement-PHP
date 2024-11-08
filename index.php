@@ -1,52 +1,34 @@
 <?php
-    require_once 'header.php';
-    require 'data.php';
+session_start();
+include 'data.php';
+
+$user_id = $_SESSION['user_id'];
+$events = getEvents($user_id);
 ?>
 
-<body>
-    <form action="" method="post">
-        <div class="forms-style">
-            <fieldset>
-                <legend>Titre de l'évènement</legend>
-                <input type="text" name="title" required>
-            </fieldset>
+<?php include 'header.php'; ?>
 
-            <fieldset>
-                <legend>Description</legend>
-                <input type="text" name="event_description" required>
-            </fieldset>
+<h2>My Events</h2>
+<a href="add_event.php">Add New Event</a> | <a href="logout.php">Logout</a>
 
-            <fieldset>
-                <legend>Date de l'évènement</legend>
-                <input type="date" name="event_date" required>
-            </fieldset>
-            <div class="center">
-                <button type="submit">Enregistrer</button>
-            </div>
-        </div>
-    </form>
+<table border="1">
+    <tr>
+        <th>Title</th>
+        <th>Description</th>
+        <th>Date</th>
+        <th>Actions</th>
+    </tr>
+    <?php foreach ($events as $event): ?>
+    <tr>
+        <td><?= htmlspecialchars($event['title']); ?></td>
+        <td><?= htmlspecialchars($event['description']); ?></td>
+        <td><?= htmlspecialchars($event['event_date']); ?></td>
+        <td>
+            <a href="edit_event.php?event_id=<?= $event['event_id']; ?>">Edit</a>
+            <a href="events.php?action=delete&event_id=<?= $event['event_id']; ?>" onclick="return confirm('Are you sure you want to delete this event?');">Delete</a>
+        </td>
+    </tr>
+    <?php endforeach; ?>
+</table>
 
-    <h2>Liste des Evènements</h2>
-    <table border="1">
-        <tr>
-            <th>Titre</th>
-            <th>Description</th>
-            <th>Date de l'évènement</th>
-            <th>Date de création</th>
-        </tr>
-        <?php foreach ($events as $event): ?>
-        <tr>
-            <td><?php echo htmlspecialchars($event['title']); ?></td>
-            <td><?php echo htmlspecialchars($event['event_description']); ?></td>
-            <td><?php echo htmlspecialchars($event['event_date']); ?></td>
-            <td><?php echo htmlspecialchars($event['created_date']); ?></td>
-            <td><button>Modifier</button></td>
-            <td><button>Supprimer</button></td>
-        </tr>
-        <?php endforeach; ?>
-    </table>
-</body>
-
-<?php 
-    require_once 'footer.php'; 
-?>
+<?php include 'footer.php'; ?>

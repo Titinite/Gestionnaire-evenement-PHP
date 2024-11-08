@@ -1,51 +1,45 @@
 <?php
-    try {
-        $base = new PDO("mysql:host=127.0.0.1:8889;dbname=gestion_events", "root", "root");
-        $base->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    }
-    catch (PDOException $e) {
-        echo "Connection error: " . $e->getMessage();
-        exit();
-    }
+try {
+    $db = new PDO("mysql:host=127.0.0.1:8889;dbname=gestion_events", "root", "root");
+    $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+} catch (PDOException $e) {
+    echo "Database connection error: " . $e->getMessage();
+    exit();
+}
 
-    function addEvent($title, $event_description, $event_date, $created_date) {
-        global $base;
-        $query = $base->prepare("INSERT INTO events (title, event_description, event_date, created_date) VALUES (:title, :event_description, :event_date, :created_date)");
-        $query->bindParam(':title', $title);
-        $query->bindParam(':event_description', $event_description);
-        $query->bindParam(':event_date', $event_date);
-        $query->bindParam(':created_date', $created_date);
-        $query->execute();
-    }
+function addEvent($user_id, $title, $description, $event_date) {
+    global $db;
+    $query = $db->prepare("INSERT INTO events (user_id, title, description, event_date) VALUES (:user_id, :title, :description, :event_date)");
+    $query->bindParam(':user_id', $user_id);
+    $query->bindParam(':title', $title);
+    $query->bindParam(':description', $description);
+    $query->bindParam(':event_date', $event_date);
+    $query->execute();
+}
 
-    function getEvents() {
-        global $base;
-        $query = $base->query("SELECT * FROM events ORDERED BY created_date DESC");
-        return $query->fetchAll(PDO::FETCH_ASSOC);
-    }
+function getEvents($user_id) {
+    global $db;
+    $query = $db->prepare("SELECT * FROM events WHERE user_id = :user_id ORDER BY event_date ASC");
+    $query->bindParam(':user_id', $user_id);
+    $query->execute();
+    return $query->fetchAll(PDO::FETCH_ASSOC);
+}
 
-    function deleteEvent($Id) {
-        global $base;
-        $query = $base->query("DELETE FROM events WHERE Id = :id");
-        $query->bindParam("Id", $Id);
-        $query->execute();
-    }
+function updateEvent($event_id, $user_id, $title, $description, $event_date) {
+    global $db;
+    $query = $db->prepare("UPDATE events SET title = :title, description = :description, event_date = :event_date WHERE event_id = :event_id AND user_id = :user_id");
+    $query->bindParam(':title', $title);
+    $query->bindParam(':description', $description);
+    $query->bindParam(':event_date', $event_date);
+    $query->bindParam(':event_id', $event_id);
+    $query->bindParam(':user_id', $user_id);
+    $query->execute();
+}
 
-    function changeEvent($title, $event_description, $event_date){
-        global $base;
-        $query = $base->query("UPDATE events SET title = :title, event_description = :event_description, event_date = :event_date WHERE Id = :id");
-        $query->bindParam("title", $title);
-        $query->bindParam("event_description", $event_description);
-        $query->bindParam("event_date", $event_date);
-        $query->execute();
-    }
-
-    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-        $title = $_POST['title'];
-        $event_description = $_POST['event_description'];
-        $event_date = $_POST['event_date'];
-        $created_date = time();
-        addEvent($title, $event_description, $event_date, $created_date);
-    }
-
-    $events = getEvents();
+function deleteEvent($event_id, $user_id) {
+    global $db;
+    $query = $db->prepare("DELETE FROM events WHERE event_id = :event_id AND user_id = :user_id");
+    $query->bindParam(':event_id', $event_id);
+    $query->bindParam(':user_id', $user_id);
+    $query->execute();
+}
