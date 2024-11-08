@@ -130,7 +130,7 @@ fieldset textarea:focus {
     margin: 0 500px 0 500px;
 }
 
-#button-submit {
+.button-submit {
     margin: 0 235px 70px 235px;
 }
 

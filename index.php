@@ -20,7 +20,7 @@
                 <legend>Date de l'évènement</legend>
                 <input type="date" name="event_date" required>
             </fieldset>
-            <button type="submit" id="button-submit">Enregistrer</button>
+            <button type="submit" class="button-submit">Enregistrer</button>
         </div>
     </form>
 
