@@ -42,7 +42,7 @@
             <td><?php echo htmlspecialchars($event['created_date']); ?></td>
             <td><button>Modifier</button></td>
             <td>
-                <form action="delete.php" method="POST">
+                <form action="delete_event.php" method="POST">
                     <input type="hidden" name="Id" value="<?php echo $event['Id']; ?>">
                     <button type="submit">Supprimer</button></td>
                 </form>   
