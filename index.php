@@ -1,9 +1,7 @@
 <?php
-session_start();
 include 'data.php';
 
-$user_id = $_SESSION['user_id'];
-$events = getEvents($user_id);
+$events = getEvents();
 ?>
 
 <?php include 'header.php'; ?>
