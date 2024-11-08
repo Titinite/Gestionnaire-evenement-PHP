@@ -1,6 +1,6 @@
 <?php
     try {
-        $base = new PDO("mysql:host=127.0.0.1:8889;dbname=gestion_events", "root", "root");
+        $base = new PDO("mysql:host=127.0.0.1;dbname=gestion_events", "root", "");
         $base->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     }
     catch (PDOException $e) {
@@ -20,7 +20,7 @@
 
     function getEvents() {
         global $base;
-        $query = $base->query("SELECT * FROM events ORDERED BY created_date DESC");
+        $query = $base->query("SELECT * FROM events ORDER BY event_date ASC");
         return $query->fetchAll(PDO::FETCH_ASSOC);
     }
 
