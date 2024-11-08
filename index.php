@@ -1,27 +1,34 @@
 <?php
-    require_once 'header.php';
+session_start();
+include 'data.php';
+
+$user_id = $_SESSION['user_id'];
+$events = getEvents($user_id);
 ?>
 
-<body>
-    <form action="" method="post">
-        <div class="forms-style">
-            <fieldset>
-                <legend>Nom d'utilisateur</legend>
-                <input type="text" name="username" required>
-            </fieldset>
+<?php include 'header.php'; ?>
 
-            <fieldset>
-                <legend>Mot de passe</legend>
-                <input type="password" name="password" required>
-            </fieldset>
+<h2>My Events</h2>
+<a href="add_event.php">Add New Event</a> | <a href="logout.php">Logout</a>
 
-            <div class="center">
-                <button type="submit">Connexion</button>
-            </div>
-        </div>
-    </form>
-</body>
+<table border="1">
+    <tr>
+        <th>Title</th>
+        <th>Description</th>
+        <th>Date</th>
+        <th>Actions</th>
+    </tr>
+    <?php foreach ($events as $event): ?>
+    <tr>
+        <td><?= htmlspecialchars($event['title']); ?></td>
+        <td><?= htmlspecialchars($event['description']); ?></td>
+        <td><?= htmlspecialchars($event['event_date']); ?></td>
+        <td>
+            <a href="edit_event.php?event_id=<?= $event['event_id']; ?>">Edit</a>
+            <a href="events.php?action=delete&event_id=<?= $event['event_id']; ?>" onclick="return confirm('Are you sure you want to delete this event?');">Delete</a>
+        </td>
+    </tr>
+    <?php endforeach; ?>
+</table>
 
-<?php 
-    require_once 'footer.php'; 
-?>
+<?php include 'footer.php'; ?>
