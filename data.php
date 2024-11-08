@@ -20,7 +20,7 @@
 
     function getEvents() {
         global $base;
-        $query = $base->query("SELECT * FROM events");
+        $query = $base->query("SELECT * FROM events ORDERED BY created_date DESC");
         return $query->fetchAll(PDO::FETCH_ASSOC);
     }
 
