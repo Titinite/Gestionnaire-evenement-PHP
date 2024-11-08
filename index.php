@@ -13,7 +13,7 @@
 
             <fieldset>
                 <legend>Description</legend>
-                <input type="text" name="description" required>
+                <input type="text" name="event_description" required>
             </fieldset>
 
             <fieldset>
@@ -34,10 +34,10 @@
         </tr>
         <?php foreach ($events as $event): ?>
         <tr>
-            <td><?php echo htmlspecialchars($event['Title']); ?></td>
-            <td><?php echo htmlspecialchars($event['Description']); ?></td>
-            <td><?php echo htmlspecialchars($event['Event_Date']); ?></td>
-            <td><?php echo htmlspecialchars($event['Created_Date']); ?></td>
+            <td><?php echo htmlspecialchars($event['title']); ?></td>
+            <td><?php echo htmlspecialchars($event['event_description']); ?></td>
+            <td><?php echo htmlspecialchars($event['event_date']); ?></td>
+            <td><?php echo htmlspecialchars($event['created_date']); ?></td>
         </tr>
         <?php endforeach; ?>
     </table>
