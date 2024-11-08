@@ -1,35 +1,39 @@
 <?php
-include 'data.php';
+include "data.php";
+include "header.php";
 
-if (!isset($_GET['Id'])) {
-    header("Location: index.php");
-    exit();
-}
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $Id = $_POST['Id'];
+    $title = $_POST['title'];
+    $event_description = $_POST['event_description'];
+    $event_date = $_POST['event_date'];
+    changeEvent($Id, $title, $event_description, $event_date);
 
-$Id = $_GET['Id'];
-$events = getEvents();
-
-// Recherche de l'événement à modifier
-$event = null;
-foreach ($events as $ev) {
-    if ($ev['Id'] == $Id) {
-        $event = $ev;
-        break;
-    }
-}
-
-if (!$event) {
-    echo "Event not found.";
-    exit();
+    header('Location: index.php');
 }
 ?>
 
-<form method="POST" action="">
-    <input type="hidden" name="action" value="edit">
-    <input type="hidden" name="event_id" value="<?= $event['Id']; ?>">
-    
-    <label>Title: <input type="text" name="title" value="<?= htmlspecialchars($event['title']); ?>" required></label><br>
-    <label>Description: <textarea name="description" required><?= htmlspecialchars($event['event_description']); ?></textarea></label><br>
-    <label>Date: <input type="datetime-local" name="event_date" value="<?= htmlspecialchars($event['event_date']); ?>" required></label><br>
-    <button type="submit">Update Event</button>
-</form>
+<body>
+    <form action="edit_event.php" method="POST">
+        <div class="forms-style">
+            <input type="hidden" name="Id" value="<?= $_GET["Id"]; ?>">
+            <fieldset>
+                <legend>Titre de l'évènement</legend>
+                <input type="text" name="title" required value="<?= htmlspecialchars($_GET['title']); ?>">
+            </fieldset>
+
+            <fieldset>
+                <legend>Description</legend>
+                <input type="text" name="event_description" required value="<?= htmlspecialchars($_GET['event_description']); ?>">
+            </fieldset>
+
+            <fieldset>
+                <legend>Date de l'évènement</legend>
+                <input type="date" name="event_date" required value="<?= htmlspecialchars($_GET['event_date']); ?>">
+            </fieldset>
+            <div class="center">
+                <button type="submit" class="button-submit">Enregistrer</button>
+            </div>
+        </div>
+    </form>
+</body>
