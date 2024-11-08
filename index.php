@@ -24,7 +24,7 @@
         </div>
     </form>
 
-    <h2>Liste des Evènements</h2>
+    <h2>Liste des évènements</h2>
     <table border="1">
         <tr>
             <th>Titre</th>

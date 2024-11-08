@@ -25,7 +25,7 @@ h1 {
 
 h2 {
     text-align: center;
-    color: #7f8c8d;
+    color: #606869;
     font-size: 1.8em;
     margin-bottom: 20px;
 }
@@ -138,7 +138,8 @@ footer {
     text-align: center;
 	bottom: 0;
 	left: 0;
+    margin-top: 100px;
 	right: 0;
 	height: 50px;
-	color: #fff;
+	color: black;
 }
