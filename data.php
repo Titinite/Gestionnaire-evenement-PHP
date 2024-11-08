@@ -1,6 +1,6 @@
 <?php
     try {
-        $base = new PDO("mysql:host=127.0.0.1:8889;dbname=events", "root", "");
+        $base = new PDO("mysql:host=127.0.0.1:80;dbname=events", "root", "");
         $base->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     }
     catch (PDOException $e) {
