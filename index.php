@@ -4,7 +4,7 @@
 ?>
 
 <body>
-    <form action="" method="post">
+    <form action="add_event.php" method="POST">
         <div class="forms-style">
             <fieldset>
                 <legend>Titre de l'évènement</legend>
