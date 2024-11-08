@@ -41,7 +41,7 @@
             <td><?php echo htmlspecialchars($event['event_date']); ?></td>
             <td><?php echo htmlspecialchars($event['created_date']); ?></td>
             <td><button>Modifier</button></td>
-            <td><button>Supprimer</button></td>
+            <td><button type="submit" action="delete_event.php">Supprimer</button></td>
         </tr>
         <?php endforeach; ?>
     </table>
