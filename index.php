@@ -40,12 +40,21 @@
             <td><?php echo htmlspecialchars($event['event_description']); ?></td>
             <td><?php echo htmlspecialchars($event['event_date']); ?></td>
             <td><?php echo htmlspecialchars($event['created_date']); ?></td>
-            <td><button>Modifier</button></td>
+            <td>
+                <form action="edit_event.php" method="GET">
+                    <input type="hidden" name="Id" value="<?php echo $event['Id']; ?>">
+                    <input type="hidden" name="title" value="<?php echo $event['title']; ?>">
+                    <input type="hidden" name="event_description" value="<?php echo $event['event_description']; ?>">
+                    <input type="hidden" name="event_date" value="<?php echo $event['created_date']; ?>">
+                    <button type="submit">Modifier</button>
+                </form>
+            </td>
             <td>
                 <form action="delete_event.php" method="POST">
                     <input type="hidden" name="Id" value="<?php echo $event['Id']; ?>">
-                    <button type="submit">Supprimer</button></td>
-                </form>   
+                    <button type="submit">Supprimer</button>
+                </form>
+            </td>
         </tr>
         <?php endforeach; ?>
     </table>
