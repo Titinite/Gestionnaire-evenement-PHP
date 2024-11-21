@@ -43,7 +43,7 @@
                     <input type="hidden" name="Id" value="<?php echo $event['Id']; ?>">
                     <input type="hidden" name="title" value="<?php echo $event['title']; ?>">
                     <input type="hidden" name="event_description" value="<?php echo $event['event_description']; ?>">
-                    <input type="hidden" name="event_date" value="<?php echo $event['created_date']; ?>">
+                    <input type="hidden" name="event_date" value="<?php echo $event['event_date']; ?>">
                     <button type="submit">Modifier</button>
                 </form>
             </td>

@@ -29,7 +29,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             <fieldset>
                 <legend>Date de l'évènement</legend>
-                <input type="date" name="event_date" required value="<?= htmlspecialchars($_GET['event_date']); ?>">
+                <input type="date" name="event_date" required value="<?= htmlspecialchars(substr($_GET['event_date'], 0, 10)); ?>">
             </fieldset>
             <div class="center">
                 <button type="submit" class="button-submit">Enregistrer</button>
